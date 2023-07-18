@@ -1,0 +1,35 @@
+import service from '@/utils/request'
+
+export const useRoleMenuApi = () => {
+	return service.get('/sys/role/menu')
+}
+
+export const useRoleApi = (id: number) => {
+	return service.get('/sys/role/' + id)
+}
+
+export const useRoleListApi = () => {
+	return service.get('/sys/role/list')
+}
+
+export const useRoleSubmitApi = (dataForm: any) => {
+	if (dataForm.id) {
+		return service.put('/sys/role', dataForm)
+	} else {
+		return service.post('/sys/role', dataForm)
+	}
+}
+
+export const useRoleDataScopeSubmitApi = (dataForm: any) => {
+	return service.put('/sys/role/data-scope', dataForm)
+}
+
+export const useRoleUserSubmitApi = (roleId: number, dataForm: any) => {
+	return service.post('/sys/role/user/' + roleId, dataForm)
+}
+
+export const dataListUrl = '/sys/role/page'
+export const deleteUrl = '/sys/role'
+
+export const dataListRoleUserUrl = '/sys/role/user/page'
+export const deleteRoleUserUrl = '/sys/role/user'
